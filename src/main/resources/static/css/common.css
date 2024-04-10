@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+table {
+  counter-reset: rowCount;
+}
+
+table > tbody > tr {
+  counter-increment: rowCount;
+}
+
+table > tbody > tr > td:first-child::before {
+  content: counter(rowCount);
+}
