@@ -15,25 +15,35 @@
 		<div class="mt-5">
 			<h1 class="text-center">食品管理システム</h1>
 		</div>
+		<div class="mt-2 text-end">
+			<a href="/new" class="btn btn-primary">新規作成</a>
+		</div>
 		<div class="mx-4 mt-5">
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th scope="col">No.</th>
-						<th scope="col">食品名</th>
-						<th scope="col">数量</th>
+						<th scope="col" style="width: 100px">No.</th>
+						<th scope="col" style="width: 250px">食品名</th>
+						<th scope="col" style="width: 100px">数量</th>
+						<th scope="col" style="width: 150px"></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="food : ${foodsList}" th:object="${foodsList}">
+					<tr th:each="food : ${foodsList}" th:object="${food}">
 						<td></td>
-						<td th:text="${food.name}"></td>
-						<td th:text="${food.quantity}"></td>
+						<td th:text="*{name}"></td>
+						<td th:text="*{quantity}"></td>
+						<td class="text-end">
+							<a th:href="@{|/edit/*{id}|}" class="btn btn-secondary">編集</a>
+							<button th:data-id="*{id}" class="btn btn-danger">削除</button>
+						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
+	<!-- origin script -->
+    <script type="text/javascript" defer src="/js/index.js"></script>
 </body>
 
 </html>
