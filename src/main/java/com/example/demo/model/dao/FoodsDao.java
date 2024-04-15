@@ -84,6 +84,7 @@ public class FoodsDao {
         // 食品情報の削除フラグを更新
     	Query query = em.createNativeQuery(
                 "UPDATE foods SET is_delete = true, update_at = :updateDate WHERE id = :id");
+    	query.setParameter("id", id);
         query.setParameter("updateDate", LocalDateTime.now());
         query.executeUpdate();
     }

@@ -35,15 +35,16 @@
 						<td th:text="*{quantity}"></td>
 						<td class="text-end">
 							<a th:href="@{|/edit/*{id}|}" class="btn btn-secondary">編集</a>
-							<button th:data-id="*{id}" class="btn btn-danger">削除</button>
+							<form th:action="@{/delete}" method="post">
+								<button class="btn btn-danger" type="submit">削除</button>
+								<input type="hidden" th:value="*{id}" name="id">
+							</form>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
-	<!-- origin script -->
-    <script type="text/javascript" defer src="/js/index.js"></script>
 </body>
 
 </html>

@@ -65,4 +65,11 @@ public class IndexController {
 		mav.setViewName("redirect:top");
 		return mav;
 	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public ModelAndView deletePost(String id, ModelAndView mav) {
+		indexService.deleteFood(id);
+		mav.setViewName("redirect:top");
+		return mav;
+	}
 }
