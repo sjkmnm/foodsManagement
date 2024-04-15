@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" th:href="@{/css/common.css}">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+				integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+	<title>食品管理システム</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="mt-5">
+			<h1 class="text-center">食品管理システム</h1>
+		</div>
+		<div class="mt-2 text-end">
+			<a href="/new" class="btn btn-primary">新規作成</a>
+		</div>
+		<div class="mx-4 mt-5">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col" style="width: 100px">No.</th>
+						<th scope="col" style="width: 250px">食品名</th>
+						<th scope="col" style="width: 100px">数量</th>
+						<th scope="col" style="width: 150px"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="food : ${foodsList}" th:object="${food}">
+						<td></td>
+						<td th:text="*{name}"></td>
+						<td th:text="*{quantity}"></td>
+						<td class="d-flex justify-content-center">
+							<a th:href="@{|/edit/*{id}|}" class="btn btn-secondary me-3">編集</a>
+							<form th:action="@{/delete}" method="post">
+								<button class="btn btn-danger" type="submit">削除</button>
+								<input type="hidden" th:value="*{id}" name="id">
+							</form>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+
+</html>
